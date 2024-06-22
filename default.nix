@@ -17,6 +17,8 @@ let
   };
   callPackage = pkgs.lib.callPackageWith (pkgs // packages // maintainers);
   packages = rec {
+    gendesk = callPackage ./packages/gendesk { };
+
     newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
     papirus-newaita-icon-theme = callPackage ./packages/papirus-newaita-icon-theme { };
     viber = callPackage ./packages/viber { };
