@@ -1,0 +1,54 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index c57dd54..c176c0a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -401,16 +401,8 @@ prepare() {
+   if [ ${#_missingFonts[@]} -gt 0 ]; then
+     echo "- Fonts are missing"
+     echo -ne "- Mount filesystems as a non-privileged user: "
+-    touch test.mount
+-    _unprivilegedMountAllowed=false
+-    _udisksctlOutput=$(udisksctl loop-setup -r -f test.mount --no-user-interaction) && {
+-      _unprivilegedMountAllowed=true
+-      _testLoopDev=$(echo "$_udisksctlOutput" | awk '{print $NF}' RS='.\n')
+-      udisksctl loop-delete -b "$_testLoopDev" --no-user-interaction
+-    }
+-    rm test.mount
+-
+-    if [ "$_unprivilegedMountAllowed" = "true" ]; then
++
++    if false; then
+       echo "allowed"
+       echo "- Downloading fonts directly"
+       mkdir -p mnt/http
+@@ -444,29 +436,15 @@ prepare() {
+     else
+       echo "not allowed"
+       echo "- Preparing download of full ISO"
+-      echo "  - Checking free disk space required for download and extraction"
+-      _freeDiskSpace=$(($(stat -f --format="%a*%S" .)))
+-      _downloadSize=$(curl -sIL "$_iso" | grep -i Content-Length | tail -n1 | awk '{print $2}' | tr -d '\r\n')
+-      [ -z $_downloadSize ] && echo -ne "Unable to determine file size of:\n${_iso}\n" && exit 255
+-      _requiredDiskSpace=$((${_downloadSize}*2))
+-      if [ $_requiredDiskSpace -gt $_freeDiskSpace ]; then
+-        echo "Not enough free disk space"
+-        echo "Needed: $((${_requiredDiskSpace}/1048576)) MiB"
+-        echo "Available: $((${_freeDiskSpace}/1048576)) MiB"
+-        exit 255
+-      fi
+ 
+-      echo "  - Downloading ISO"
+-      curl -JLO "$_iso"
+       echo "  - Extracting Windows installation image"
+-      7z x $(echo "$_iso" | awk -F "/" '{print $NF}') sources/install.wim
++      7z x $_iso_file sources/install.wim
+ 
+       echo "  - Extracting files from local Windows installation image"
+       7z e sources/install.wim \
+         Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
+ 
+       echo "  - Cleaning up temporary files"
+-      rm $(echo "$_iso" | awk -F "/" '{print $NF}')
+       rm -rf sources
+     fi
+   fi
