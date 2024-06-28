@@ -17,6 +17,7 @@ let
   };
   callPackage = pkgs.lib.callPackageWith (pkgs // packages // maintainers);
   packages = rec {
+    slack = callPackage ./packages/slack { };
     gendesk = callPackage ./packages/gendesk { };
 
     newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
