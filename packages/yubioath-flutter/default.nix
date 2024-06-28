@@ -13,13 +13,13 @@
 
 flutter319.buildFlutterApplication rec {
   pname = "yubioath-flutter";
-  version = "6.4.0";
+  version = "7.0.0";
 
   src = fetchFromGitHub {
     owner = "Yubico";
     repo = "yubioath-flutter";
     rev = version;
-    hash = "sha256-aXUnmKEUCi0rsVr3HVhEk6xa1z9HMsH+0AIY531hqiU=";
+    hash = "sha256-+TmQprJZ5grgWlqUx0tn4m6vUThCYinPyJHKJ0c+HjY=";
   };
 
   passthru.helper = python3.pkgs.callPackage ./helper.nix { inherit src version meta; };
