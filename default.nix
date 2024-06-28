@@ -19,6 +19,7 @@ let
   packages = rec {
     slack = callPackage ./packages/slack { };
     gendesk = callPackage ./packages/gendesk { };
+    yubioath-flutter = callPackage ./packages/yubioath-flutter { };
 
     newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
     papirus-newaita-icon-theme = callPackage ./packages/papirus-newaita-icon-theme { };
