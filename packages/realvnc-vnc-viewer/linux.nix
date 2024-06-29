@@ -17,7 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
     "x86_64-linux" = requireFile rec {
       name = "VNC-Viewer-${finalAttrs.version}-Linux-x64.rpm";
       url = "https://downloads.realvnc.com/download/file/viewer.files/${name}";
-      sha256 = "sha256-Ull9iNi8NxB12YwEThWE0P9k1xOV2LZnebuRrVH/zwI=";
+      sha256 = "sha256-KJZbH3mfxuyUslkYvB/RKquEsB7ayJSv6yNqfLmAsGI=";
       message= ''
         vnc-viewer can be downloaded from ${url},
         but the download link require captcha, thus if you wish to use this application,
