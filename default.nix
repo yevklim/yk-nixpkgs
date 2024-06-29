@@ -19,6 +19,7 @@ let
   packages = rec {
     slack = callPackage ./packages/slack { };
     gendesk = callPackage ./packages/gendesk { };
+    flashplayer = callPackage ./packages/flashplayer { };
     yubioath-flutter = callPackage ./packages/yubioath-flutter { };
     realvnc-vnc-viewer = callPackage ./packages/realvnc-vnc-viewer { };
 
