@@ -58,9 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   postPatch = ''
     substituteInPlace ./usr/share/applications/realvnc-vncviewer.desktop \
-      --replace /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer48x48.png
+      --replace-fail /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer
     substituteInPlace ./usr/share/mimelnk/application/realvnc-vncviewer-mime.desktop \
-      --replace /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer48x48.png
+      --replace-fail /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer
   '';
 
   installPhase = ''
