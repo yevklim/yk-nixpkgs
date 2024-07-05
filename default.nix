@@ -35,5 +35,7 @@ let
     ttf-ms-win11-auto-zh_cn = ttf-ms-win11-auto.zh_cn;
     ttf-ms-win11-auto-zh_tw = ttf-ms-win11-auto.zh_tw;
     ttf-ms-win11-auto-other = ttf-ms-win11-auto.other;
+
+    wallpapers = callPackage ./packages/wallpapers { };
   };
 in packages
