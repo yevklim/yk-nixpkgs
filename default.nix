@@ -18,6 +18,7 @@ let
   callPackage = pkgs.lib.callPackageWith (pkgs // packages // maintainers);
   packages = rec {
     jellyfin = callPackage ./packages/jellyfin { };
+    jellyfin-web = callPackage ./packages/jellyfin-web { };
 
     slack = callPackage ./packages/slack { };
     gendesk = callPackage ./packages/gendesk { };
