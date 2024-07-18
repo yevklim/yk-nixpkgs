@@ -47,13 +47,52 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   desktopItems = [
-    # (makeDesktopItem { # included in the rpm but not the deb package
-    #   name = "realvnc-vncserver-scheme";
-    #   desktopName = "VNC Viewer URL Handler";
-    #   exec = "vncviewer -uri %u";
-    #   mimeTypes = [ "x-scheme-handler/com.realvnc.vncviewer.connect" ];
-    #   noDisplay = true;
-    # })
+    (makeDesktopItem { # included in the rpm but not the deb package
+      name = "realvnc-vncserver-scheme";
+      desktopName = "VNC Viewer URL Handler";
+      exec = "vncviewer -uri %u";
+      mimeTypes = [ "x-scheme-handler/com.realvnc.vncviewer.connect" ];
+      noDisplay = true;
+    })
+    (makeDesktopItem {
+      name = "realvnc-vnclicensewiz";
+      desktopName = "VNC Server - Licensing";
+      genericName = "VNC Server";
+      icon = "vnc";
+      noDisplay = true;
+    })
+    (makeDesktopItem {
+      name = "realvnc-vncserver-service";
+      desktopName = "VNC Server";
+      genericName = "VNC Server";
+      comment = "Start VNC Server in Service Mode";
+      icon = "vnc";
+      exec = "/run/wrappers/bin/pkexec vncservice start vncserver-x11-serviced";
+      categories = [ "Application" "Network" "RemoteAccess" ];
+    })
+    (makeDesktopItem {
+      name = "realvnc-vncserverui-service";
+      desktopName = "VNC Server";
+      genericName = "VNC Server";
+      icon = "vnc";
+      noDisplay = true;
+    })
+    (makeDesktopItem {
+      name = "realvnc-vncserverui-user";
+      desktopName = "VNC Server";
+      genericName = "VNC Server";
+      icon = "vnc";
+      exec = "vncserver-x11 -showstatus";
+      noDisplay = true;
+    })
+    (makeDesktopItem {
+      name = "realvnc-vncserverui-virtual";
+      desktopName = "VNC Server";
+      genericName = "VNC Server";
+      icon = "vnc";
+      exec = "vncserver-x11 -virtual -showexistingstatus";
+      noDisplay = true;
+    })
   ];
 
   unpackPhase = ''
@@ -71,6 +110,8 @@ stdenv.mkDerivation (finalAttrs: {
     runHook preInstall
 
     mv usr $out
+    rm -f $out/share/applications/*.desktop
+    ln -sr -t $out/bin $out/lib/vnc/vncservice
 
     runHook postInstall
   '';
