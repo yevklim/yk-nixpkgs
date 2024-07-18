@@ -21,6 +21,7 @@ let
     gendesk = callPackage ./packages/gendesk { };
     flashplayer = callPackage ./packages/flashplayer { };
     yubioath-flutter = callPackage ./packages/yubioath-flutter { };
+    realvnc-vnc-server = callPackage ./packages/realvnc-vnc-server { };
     realvnc-vnc-viewer = callPackage ./packages/realvnc-vnc-viewer { };
 
     newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
