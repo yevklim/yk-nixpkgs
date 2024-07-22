@@ -15,8 +15,13 @@ let
   maintainers = {
     inherit yevklim;
   };
-  callPackage = pkgs.lib.callPackageWith (pkgs // packages // maintainers);
+  callPackage = pkgs.lib.callPackageWith (pkgs // (builtins.removeAttrs packages [ "lib" ]) // maintainers);
+  lib = {
+    mkAutostartEntries = callPackage ./lib/mk-autostart-entries.nix { };
+  };
   packages = rec {
+    inherit lib;
+
     slack = callPackage ./packages/slack { };
     gendesk = callPackage ./packages/gendesk { };
     flashplayer = callPackage ./packages/flashplayer { };
