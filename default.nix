@@ -45,6 +45,40 @@ let
 
     wallpapers = callPackage ./packages/wallpapers { };
   };
+  _overlay =
+    final:
+    prev:
+    (
+      builtins.mapAttrs
+        (
+          name:
+          pkg:
+          let
+            package_exists = builtins.hasAttr name prev;
+            prev_pkg = prev.${name};
+          in
+          if !package_exists # if package doesn't exists
+          then pkg
+          else
+            (
+              if !(prev.lib.isDerivation prev_pkg) # if package is not a derivation
+              then builtins.throw ''Failed to overwrite "${name}". It's forbidden to overwrite a non-derivation with a derivation.''
+              else
+                (
+                  let
+                    version_comparison = builtins.compareVersions prev_pkg.version or (throw ''Package "${name}" doesn't have a version.'') pkg.version;
+                  in
+                  {
+                    "-1" = pkg;
+                    "0" = prev.lib.warn ''Package "${name}": original version matches the overwriting version "${pkg.version}"'' pkg;
+                    "1" = prev_pkg;
+                  }.${toString version_comparison}
+                )
+            )
+        )
+        _packages
+    )
+  ;
 in
 {
   lib = _lib;
@@ -72,5 +106,5 @@ in
     in
     _3
   ;
-  # builtins.groupBy
+  overlay = _overlay;
 }
