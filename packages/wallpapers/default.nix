@@ -23,6 +23,6 @@ stdenv.mkDerivation rec {
   meta = {
     description = "YK's collection of wallpapers";
     homepage = "https://github.com/yevklim/wallpapers";
-    platforms = lib.platforms.all;
+    platforms = lib.platforms.linux;
   };
 }

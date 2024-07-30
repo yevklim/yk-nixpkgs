@@ -1,6 +1,4 @@
 {
-  yevklim,
-
   fetchFromGitHub,
   gitUpdater,
   lib,
@@ -53,6 +51,6 @@ stdenvNoCC.mkDerivation rec {
     homepage = "https://github.com/yevklim/newaita-reborn";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers = [ yevklim ];
+    maintainers = [ lib.maintainers.yevklim ];
   };
 }

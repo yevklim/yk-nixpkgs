@@ -1,6 +1,4 @@
 {
-  yevklim,
-
   lib,
   buildGoModule,
   fetchurl,
@@ -22,7 +20,7 @@ buildGoModule rec {
     description = "Utility for generating desktop files by specifying a minimum of information";
     homepage = "https://gendesk.roboticoverlords.org/";
     license = lib.licenses.mit;
-    maintainers = [ yevklim ];
+    maintainers = [ lib.maintainers.yevklim ];
     platforms = [ "x86_64-linux" ];
   };
 }

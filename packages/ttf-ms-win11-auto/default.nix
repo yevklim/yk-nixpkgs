@@ -1,6 +1,4 @@
 {
-  yevklim,
-
   lib,
   stdenvNoCC,
   fetchgit,
@@ -102,8 +100,8 @@ stdenvNoCC.mkDerivation rec {
     description = "Microsoft Windows 11 TrueType fonts";
     homepage = "https://aur.archlinux.org/packages/ttf-ms-win11-auto";
     license = lib.licenses.unfree;
-    maintainers = [ yevklim ];
-    platforms = lib.platforms.all;
+    maintainers = [ lib.maintainers.yevklim ];
+    platforms = lib.platforms.linux;
     outputsToInstall = outputs;
   };
 }

@@ -1,27 +1,29 @@
-{
-  pkgs ? import <nixpkgs> {
+{ inputs ? {
+    nixpkgs = <nixpkgs>;
+  }
+, nixpkgs ? inputs.nixpkgs
+, pkgs ? import nixpkgs {
     system = "x86_64-linux";
     config.allowUnfree = true;
-  },
-  ...
+  }
+, ...
 }:
-let 
-  yevklim = {
+let
+  callPackage = pkgs.lib.callPackageWith (pkgs // _packages // {
+    lib = pkgs.lib // _lib // {
+      maintainers = pkgs.lib.maintainers // _maintainers;
+    };
+  });
+  _maintainers.yevklim = {
     name = "yevklim";
     email = "64846678+yevklim@users.noreply.github.com";
     github = "yevklim";
     githubId = 64846678;
   };
-  maintainers = {
-    inherit yevklim;
-  };
-  callPackage = pkgs.lib.callPackageWith (pkgs // (builtins.removeAttrs packages [ "lib" ]) // maintainers);
-  lib = {
+  _lib = {
     mkAutostartEntries = callPackage ./lib/mk-autostart-entries.nix { };
   };
-  packages = rec {
-    inherit lib;
-
+  _packages = rec {
     slack = callPackage ./packages/slack { };
     gendesk = callPackage ./packages/gendesk { };
     flashplayer = callPackage ./packages/flashplayer { };
@@ -43,4 +45,32 @@ let
 
     wallpapers = callPackage ./packages/wallpapers { };
   };
-in packages
+in
+{
+  lib = _lib;
+  packages =
+    let
+      _1 = builtins.mapAttrs (name: pkg: { inherit name pkg; }) _packages;
+      _2 = builtins.attrValues _1;
+      _3 = builtins.foldl'
+        (
+          final:
+          { name, pkg }:
+          final // (
+            pkgs.lib.genAttrs
+              pkg.meta.platforms
+              (
+                platform:
+                final.${platform} or { } // {
+                  ${name} = pkg;
+                }
+              )
+          )
+        )
+        { }
+        _2;
+    in
+    _3
+  ;
+  # builtins.groupBy
+}

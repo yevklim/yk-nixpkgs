@@ -1,6 +1,4 @@
 {
-  yevklim,
-
   lib,
   stdenvNoCC,
   gitUpdater,
@@ -56,6 +54,6 @@ stdenvNoCC.mkDerivation {
     homepage = "<none>";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers = [ yevklim ];
+    maintainers = [ lib.maintainers.yevklim ];
   };
 }

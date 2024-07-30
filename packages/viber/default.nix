@@ -1,6 +1,4 @@
 {
-  yevklim,
-
   appimageTools,
   fetchurl,
   lib,
@@ -40,7 +38,7 @@ appimageTools.wrapType2 {
     homepage = "https://www.viber.com";
     license = lib.licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = [ yevklim ];
+    maintainers = [ lib.maintainers.yevklim ];
     mainProgram = pname;
   };
 }

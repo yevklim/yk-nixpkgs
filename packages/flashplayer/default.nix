@@ -1,4 +1,4 @@
-{ yevklim, lib, callPackage, permitInsecurePackage ? false }:
+{ lib, callPackage, permitInsecurePackage ? false }:
 let
   pname = "flashplayer";
   version = "32.0.0.465";
@@ -11,7 +11,7 @@ let
       url = "https://web.archive.org/web/20240628135259/https://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf";
       free = false;
     };
-    maintainers = [ yevklim ];
+    maintainers = [ lib.maintainers.yevklim ];
     platforms = [ "x86_64-linux" ];
     mainProgram = pname;
     knownVulnerabilities = lib.optionals (!permitInsecurePackage) [
