@@ -1,4 +1,5 @@
-{ stdenv
+{ lib
+, stdenv
 , fetchFromGitHub
 }:
 stdenv.mkDerivation rec {
@@ -18,4 +19,10 @@ stdenv.mkDerivation rec {
     cp -dR ./* $out/share/backgrounds
     runHook postInstall
   '';
+
+  meta = {
+    description = "YK's collection of wallpapers";
+    homepage = "https://github.com/yevklim/wallpapers";
+    platforms = lib.platforms.all;
+  };
 }
