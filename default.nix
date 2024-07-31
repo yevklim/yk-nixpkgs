@@ -83,8 +83,8 @@ let
                       in
                       {
                         "-1" = pkg;
-                        "0" = prev.lib.warn ''Package "${name}": original version matches the overwriting version "${pkg.version}"'' pkg;
-                        "1" = prev_pkg;
+                        "0" = prev.lib.warn ''yk-nixpkgs.overlay: yk-nixpkgs."${name}".version == nixpkgs."${name}".version == "${pkg.version}". yk-nixpkgs."${name}" will overwrite nixpkgs."${name}".'' pkg;
+                        "1" = prev.lib.warn ''nixpkgs."${name}" is newer (${prev_pkg.version}) than yk-nixpkgs."${name}" (${pkg.version}). yk-nixpkgs."${name}" will not overwrite nixpkgs."${name}".'' prev_pkg;
                       }.${toString version_comparison}
                     )
                 )
