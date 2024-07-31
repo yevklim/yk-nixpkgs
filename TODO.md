@@ -9,3 +9,8 @@
 - nixpkgs/viber:
   - update to 23.2.0.3;
   - fix video;
+- nixpkgs/jellyfin-media-player:
+  - fix WM_CLASS;
+- yk-nixpkgs/ttf-ms-win11-auto:
+  - refactor;
+  - optimize;
