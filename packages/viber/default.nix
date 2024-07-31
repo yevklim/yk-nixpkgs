@@ -7,10 +7,13 @@
 }:
 let
   pname = "viber";
-  version = "21.8.0.11";
+  version = "23.2.0.3";
   src = fetchurl {
-    url = "https://web.archive.org/web/20240517170128/https://download.cdn.viber.com/desktop/Linux/viber.AppImage";
-    hash = "sha256-re4VI2aW+vd8ImHt6UiRvjFZwy0zOI/eStVHljWoaDI=";
+    # Official link is dynamic and always points to the latest version of Viber.
+    # It's unacceptable for use in Nix, so we point to a snapshot in Internet Archive.
+    # https://download.cdn.viber.com/desktop/Linux/viber.AppImage
+    url = "https://web.archive.org/web/20240731114939if_/https://download.cdn.viber.com/desktop/Linux/viber.AppImage";
+    hash = "sha256-S+PpVbMq30p6PECUfdp2FESbqFk9lTbaadNFUDs7TkE=";
   };
   appimageContents = appimageTools.extractType2 {
     inherit pname version src;
