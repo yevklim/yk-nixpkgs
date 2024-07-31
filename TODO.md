@@ -1,12 +1,11 @@
-- slack:
+- yk-nixpkgs/slack:
   - remove;
-  - use upstream nixpkgs instead;
-- gendesk:
-  - add to upstream nixpkgs;
-- yubioath-flutter:
-  - update in upstream nixpkgs;
-- realvnc-vnc-viewer:
-  - add aarch64-linux support in upstream nixpkgs;
-- viber:
-  - update in upstream nixpkgs;
-  - make sure video works as expected;
+- nixpkgs/gendesk:
+  - add;
+- nixpkgs/yubioath-flutter:
+  - update to 7.0.0;
+- nixpkgs/realvnc-vnc-viewer:
+  - add aarch64-linux support;
+- nixpkgs/viber:
+  - update to 23.2.0.3;
+  - fix video;
