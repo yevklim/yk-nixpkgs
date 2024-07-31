@@ -48,6 +48,14 @@ let
                 --replace-fail /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer
             '';
         });
+        jellyfin-media-player = pkgs.jellyfin-media-player.overrideAttrs (prev: {
+          postInstall =
+            assert prev.version == "1.11.1";
+            prev.postInstall + pkgs.lib.optionalString pkgs.stdenv.isLinux  ''
+              substituteInPlace $out/share/applications/com.github.iwalton3.jellyfin-media-player.desktop \
+                --replace-fail "StartupWMClass=com.github.iwalton3.jellyfin-media-player" "StartupWMClass=${prev.meta.mainProgram}"
+            '';
+        });
 
         newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
         papirus-newaita-icon-theme = callPackage ./packages/papirus-newaita-icon-theme { };
