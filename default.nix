@@ -24,8 +24,8 @@ let
     })
   ;
   scope1 = pkgs.lib.makeScope pkgs.newScope (self: {
-    libMerged = mergeLib pkgs.lib self.lib;
-    lib = self.callPackage ./lib { lib = self.libMerged; };
+    lib = mergeLib pkgs.lib self.lib';
+    lib' = self.callPackage ./lib { };
   });
   scope2 = pkgs.lib.makeScope scope1.newScope (
     self:
@@ -54,7 +54,6 @@ let
       };
     in
     _packages // {
-      lib = scope1.libMerged;
       inherit _packages;
       overlay =
         final:
@@ -120,7 +119,7 @@ let
   ;
 in
 {
-  inherit (scope1) lib;
+  lib = scope1.lib';
   inherit (scope2) overlay;
   packages = mkPackagesByPlatform scope2._packages;
 }
