@@ -9,6 +9,5 @@
   - add aarch64-linux support;
   - update in upstream nixpkgs;
 - viber:
-  - update to 23.2.0.3;
   - update in upstream nixpkgs;
   - make sure video works as expected;
