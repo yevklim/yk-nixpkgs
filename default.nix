@@ -34,6 +34,10 @@ let
         slack = callPackage ./packages/slack { };
         gendesk = callPackage ./packages/gendesk { };
         flashplayer = callPackage ./packages/flashplayer { };
+        flashplayer-standalone = callPackage ./packages/flashplayer-standalone { };
+        flashplayer-standalone-debugger = flashplayer-standalone.override {
+          debug = true;
+        };
         yubioath-flutter = callPackage ./packages/yubioath-flutter { };
         realvnc-vnc-viewer = callPackage ./packages/realvnc-vnc-viewer { };
 
