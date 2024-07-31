@@ -6,8 +6,7 @@
 - yubioath-flutter:
   - update in upstream nixpkgs;
 - realvnc-vnc-viewer:
-  - add aarch64-linux support;
-  - update in upstream nixpkgs;
+  - add aarch64-linux support in upstream nixpkgs;
 - viber:
   - update in upstream nixpkgs;
   - make sure video works as expected;

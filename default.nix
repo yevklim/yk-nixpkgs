@@ -38,7 +38,16 @@ let
           debug = true;
         };
         yubioath-flutter = callPackage ./packages/yubioath-flutter { };
-        realvnc-vnc-viewer = callPackage ./packages/realvnc-vnc-viewer { };
+        realvnc-vnc-viewer = pkgs.realvnc-vnc-viewer.overrideAttrs (prev: {
+          postPatch =
+            assert prev.version == "7.12.0";
+            ''
+              substituteInPlace ./usr/share/applications/realvnc-vncviewer.desktop \
+                --replace-fail /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer
+              substituteInPlace ./usr/share/mimelnk/application/realvnc-vncviewer-mime.desktop \
+                --replace-fail /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer
+            '';
+        });
 
         newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
         papirus-newaita-icon-theme = callPackage ./packages/papirus-newaita-icon-theme { };
