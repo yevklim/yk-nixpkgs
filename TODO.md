@@ -3,8 +3,6 @@
   - use upstream nixpkgs instead;
 - gendesk:
   - add to upstream nixpkgs;
-- flashplayer:
-  - see https://www.nixhub.io/search?q=flashplayer;
 - yubioath-flutter:
   - update in upstream nixpkgs;
 - realvnc-vnc-viewer:
