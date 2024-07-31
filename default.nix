@@ -9,12 +9,19 @@
 , ...
 }:
 let
-  mergeLib =
+  mergeLib' =
     lib1:
     lib2:
     lib1 // lib2 // {
       maintainers = lib1.maintainers // lib2.maintainers;
     }
+  ;
+  mergeLib =
+    lib1:
+    lib2:
+    lib1.extend (self: super: lib2 // {
+      maintainers = lib1.maintainers / lib2.maintainers;
+    })
   ;
   scope1 = pkgs.lib.makeScope pkgs.newScope (self: {
     libMerged = mergeLib pkgs.lib self.lib;
