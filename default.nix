@@ -80,7 +80,7 @@ let
                     )
                 )
             )
-            self.packages
+            self._packages
         )
       ;
     }
