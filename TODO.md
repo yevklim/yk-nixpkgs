@@ -1,5 +1,3 @@
-- yk-nixpkgs/slack:
-  - remove;
 - nixpkgs/gendesk:
   - add;
 - nixpkgs/yubioath-flutter:

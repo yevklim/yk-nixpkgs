@@ -38,7 +38,6 @@ let
     self:
     let
       _packages = let inherit (self) callPackage; in rec {
-        slack = callPackage ./packages/slack { };
         gendesk = callPackage ./packages/gendesk { };
         flashplayer-standalone = callPackage ./packages/flashplayer-standalone { };
         flashplayer-standalone-debugger = flashplayer-standalone.override {
