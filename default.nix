@@ -1,5 +1,12 @@
+let
+  inherit (builtins.fromJSON (builtins.readFile ./flake.lock)) nodes;
+  # Fetch using flake lock, for legacy compat
+  fromFlake = name:
+    let inherit (nodes.${name}) locked;
+    in builtins.getFlake "${locked.type}:${locked.owner}/${locked.repo}/${locked.rev}";
+in
 { inputs ? {
-    nixpkgs = <nixpkgs>;
+    nixpkgs = fromFlake "nixpkgs";
   }
 , nixpkgs ? inputs.nixpkgs
 , pkgs ? import nixpkgs {
