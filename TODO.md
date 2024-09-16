@@ -1,7 +1,5 @@
 - nixpkgs/gendesk:
   - add;
-- nixpkgs/yubioath-flutter:
-  - update to 7.0.0;
 - nixpkgs/realvnc-vnc-viewer:
   - add aarch64-linux support;
 - nixpkgs/viber:

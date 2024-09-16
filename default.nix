@@ -43,7 +43,6 @@ let
         flashplayer-standalone-debugger = flashplayer-standalone.override {
           debug = true;
         };
-        yubioath-flutter = callPackage ./packages/yubioath-flutter { };
         realvnc-vnc-viewer = pkgs.realvnc-vnc-viewer.overrideAttrs (prev: {
           postPatch =
             assert prev.version == "7.12.0";
