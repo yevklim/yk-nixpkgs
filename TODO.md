@@ -10,3 +10,5 @@
 - yk-nixpkgs/ttf-ms-win11-auto:
   - refactor;
   - optimize;
+- yk-nixpkgs/curseforge:
+  - add;
