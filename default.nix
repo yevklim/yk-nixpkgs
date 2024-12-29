@@ -45,7 +45,7 @@ let
         };
         realvnc-vnc-viewer = pkgs.realvnc-vnc-viewer.overrideAttrs (prev: {
           postPatch =
-            assert prev.version == "7.12.0";
+            assert prev.version == "7.12.1";
             ''
               substituteInPlace ./usr/share/applications/realvnc-vncviewer.desktop \
                 --replace-fail /usr/share/icons/hicolor/48x48/apps/vncviewer48x48.png vncviewer
