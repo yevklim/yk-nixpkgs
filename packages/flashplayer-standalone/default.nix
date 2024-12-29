@@ -1,7 +1,7 @@
 { stdenv
 , lib
 , fetchurl
-, alsaLib
+, alsa-lib
 , atk
 , bzip2
 , cairo
@@ -96,7 +96,7 @@ stdenv.mkDerivation {
   rpath = lib.makeLibraryPath
     [
       stdenv.cc.cc
-      alsaLib
+      alsa-lib
       atk
       bzip2
       cairo
