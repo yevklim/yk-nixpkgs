@@ -62,6 +62,14 @@ let
             '';
         });
 
+        papirus-icon-theme = pkgs.papirus-icon-theme.overrideAttrs {
+          src = pkgs.fetchFromGitHub {
+            owner = "yevklim";
+            repo = "papirus-icon-theme";
+            rev = "ghostty";
+            hash = "sha256-4lZfLeovPyUoq5semVubquEavlJ13acd2b6gxJiCTjc=";
+          };
+        };
         newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
         papirus-newaita-icon-theme = callPackage ./packages/papirus-newaita-icon-theme { };
         viber = callPackage ./packages/viber { };
