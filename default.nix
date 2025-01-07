@@ -62,6 +62,15 @@ let
             '';
         });
 
+        bottles-unwrapped = pkgs.bottles-unwrapped.overrideAttrs {
+          src = pkgs.fetchFromGitHub {
+            owner = "bottlesdevs";
+            repo = "bottles";
+            rev = "53dc73e6885c261b17d56a46f4dda767ea3bf898";
+            hash = "sha256-ZCqPX77KPPveK27p5dUo7+op17v6IQQMjSFV7U/K4ys=";
+          };
+        };
+
         papirus-icon-theme = pkgs.papirus-icon-theme.overrideAttrs {
           src = pkgs.fetchFromGitHub {
             owner = "yevklim";
