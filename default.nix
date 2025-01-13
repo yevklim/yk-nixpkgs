@@ -75,8 +75,8 @@ let
           src = pkgs.fetchFromGitHub {
             owner = "yevklim";
             repo = "papirus-icon-theme";
-            rev = "ghostty";
-            hash = "sha256-4lZfLeovPyUoq5semVubquEavlJ13acd2b6gxJiCTjc=";
+            rev = "ghostty-rev2";
+            hash = "sha256-NF4KmmQKs/Eq6xKfGi0itIWUZAYIxZejPECU61oe7eg=";
           };
         };
         newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
