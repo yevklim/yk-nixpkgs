@@ -72,11 +72,12 @@ let
         };
 
         papirus-icon-theme = pkgs.papirus-icon-theme.overrideAttrs {
+          version = "20250115";
           src = pkgs.fetchFromGitHub {
             owner = "yevklim";
             repo = "papirus-icon-theme";
-            rev = "ghostty-rev2";
-            hash = "sha256-NF4KmmQKs/Eq6xKfGi0itIWUZAYIxZejPECU61oe7eg=";
+            rev = "20250115";
+            hash = "sha256-Eya94M41NK1Dtrde/jyYMq5GSoCcZt/pW04rjja1OmA=";
           };
         };
         newaita-reborn-icon-theme = callPackage ./packages/newaita-reborn-icon-theme { };
