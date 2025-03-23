@@ -4,7 +4,7 @@
   lib,
   stdenvNoCC,
 
-  breeze-icons,
+  kdePackages,
   gtk3,
   hicolor-icon-theme,
   ...
@@ -25,7 +25,7 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   propagatedBuildInputs = [
-    breeze-icons
+    kdePackages.breeze-icons
     hicolor-icon-theme
   ];
 
