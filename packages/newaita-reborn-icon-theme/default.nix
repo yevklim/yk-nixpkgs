@@ -29,6 +29,7 @@ stdenvNoCC.mkDerivation rec {
     hicolor-icon-theme
   ];
 
+  dontWrapQtApps = true;
   dontDropIconThemeCache = true;
 
   installPhase = ''
