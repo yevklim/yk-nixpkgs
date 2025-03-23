@@ -5,7 +5,7 @@
 
   newaita-reborn-icon-theme,
 
-  breeze-icons,
+  kdePackages,
   gtk3,
   hicolor-icon-theme,
   papirus-icon-theme,
@@ -24,7 +24,7 @@ stdenvNoCC.mkDerivation {
   propagatedBuildInputs = [
     newaita-reborn-icon-theme
     papirus-icon-theme
-    breeze-icons
+    kdePackages.breeze-icons
     hicolor-icon-theme
   ];
 
