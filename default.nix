@@ -11,7 +11,12 @@ in
 , nixpkgs ? inputs.nixpkgs
 , pkgs ? import nixpkgs {
     system = "x86_64-linux";
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "qtwebengine-5.15.19" # for jellyfin-media-player
+      ];
+    };
   }
 , ...
 }:
